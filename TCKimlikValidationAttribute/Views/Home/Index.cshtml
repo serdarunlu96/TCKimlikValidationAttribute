@@ -1,0 +1,39 @@
+﻿@model TCKimlikValidationAttribute.Attributes.Models.PersonModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>T.C. Kimlik Numarası Doğrulama</title>
+</head>
+<body>
+    <h2>T.C. Kimlik Numarası Doğrulama</h2>
+
+    @using (Html.BeginForm("CheckTCKimlik", "Home", FormMethod.Post))
+    {
+        <div>
+            @Html.LabelFor(m => m.TCKimlik)
+            @Html.TextBoxFor(m => m.TCKimlik)
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Kontrol Et" />
+        </div>
+    }
+    <br>
+    @if (ViewBag.IsValid != null)
+    {
+        <div>
+            <strong>
+                @if ((bool)ViewBag.IsValid)
+                {
+                    <span style="color: green;">Geçerli T.C. Kimlik Numarası</span>
+                }
+                else
+                {
+                    <span style="color: red;">Geçersiz T.C. Kimlik Numarası</span>
+                }
+            </strong>
+        </div>
+    }
+</body>
+</html>
